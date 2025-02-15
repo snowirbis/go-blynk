@@ -177,8 +177,15 @@ func (g *Blynk) processor() {
 								slog.Printf("[DEBUG] failed to find reader, Pin: %d", pin)
 							} else {
 								var buf bytes.Buffer
-								buf.WriteString(resp.Values[2])
-								slog.Printf("[DEBUG] value: %s", resp.Values[2])
+								// buf.WriteString(resp.Values[2])
+								// slog.Printf("[DEBUG] value: %s", resp.Values[2])
+
+								// Join all values begins from index 2
+								// Now we can control merged zeRGBa with single pin
+								data := strings.Join(resp.Values[2:], ".")
+								slog.Printf("[DEBUG] value: %s", data)
+
+								buf.WriteString(data)
 								writer(uint(pin), &buf)
 							}
 						}
