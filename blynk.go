@@ -15,7 +15,7 @@ import (
 	slog "github.com/OloloevReal/go-simple-log"
 )
 
-const Version = "0.0.6"
+const Version = "0.0.7"
 
 type Blynk struct {
 	APIkey          string
